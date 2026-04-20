@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://djc2wirwhg3g"]
+[gd_scene load_steps=18 format=3 uid="uid://djc2wirwhg3g"]
 
+[ext_resource type="PackedScene" uid="uid://cwkved26r8iwn" path="res://fire_drop_4.tscn" id="1_m0rpm"]
 [ext_resource type="PackedScene" uid="uid://cuh1yaoty6gvf" path="res://camera.tscn" id="1_nnx1f"]
-[ext_resource type="Shader" path="res://pixelart_stylizer.gdshader" id="2_w500p"]
+[ext_resource type="Shader" uid="uid://ctvc22q7gsg4o" path="res://pixelart_stylizer.gdshader" id="2_w500p"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_gg7it"]
 
@@ -52,8 +53,6 @@ ambient_light_color = Color(0.607843, 0.756863, 0.92549, 1)
 ambient_light_sky_contribution = 0.17
 tonemap_mode = 2
 sdfgi_min_cell_size = 0.4
-sdfgi_cascade0_distance = 25.6
-sdfgi_max_distance = 409.6
 volumetric_fog_density = 0.1026
 volumetric_fog_emission = Color(0.941176, 0.470588, 0.337255, 1)
 adjustment_saturation = 0.01
@@ -135,11 +134,14 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y7lvy"]
 _data = {
-"RESET": SubResource("Animation_clmft"),
-"loop": SubResource("Animation_b55y7")
+&"RESET": SubResource("Animation_clmft"),
+&"loop": SubResource("Animation_b55y7")
 }
 
 [node name="Demo" type="Node3D"]
+
+[node name="Fire_Drop4" parent="." instance=ExtResource("1_m0rpm")]
+transform = Transform3D(0.24997701, 0.0033901983, 0, -0.0033901983, 0.24997701, 0, 0, 0, 0.25, -0.04699707, 1.9993286, 0)
 
 [node name="Camera" parent="." instance=ExtResource("1_nnx1f")]
 transform = Transform3D(1, 0, 0, 0, 0.878284, 0.47814, 0, -0.47814, 0.878284, -2.38419e-07, 2.76679, 4.03603)
@@ -152,17 +154,19 @@ directional_shadow_split_1 = 0.032
 directional_shadow_split_3 = 0.54
 
 [node name="ObjectShadedCube" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.818019, 0, -0.575191, 0, 1, 0, 0.575191, 0, 0.818019, 3.02932, 1.08517, -2.41707)
+transform = Transform3D(0.8062585, 0, -0.5915631, 0, 1, 0, 0.5915631, 0, 0.8062585, 3.02932, 1.08517, -2.41707)
 mesh = SubResource("BoxMesh_gg7it")
 surface_material_override/0 = SubResource("StandardMaterial3D_l7ldl")
 
 [node name="Cube" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.34038, 0, 0.940288, 0, 1, 0, -0.940288, 0, -0.34038, 0, 0, 0.0105325)
+visible = false
 mesh = SubResource("BoxMesh_gg7it")
 surface_material_override/0 = SubResource("StandardMaterial3D_r0a1b")
 
 [node name="Torus" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.7, -3.12647e-06, 0, 3.12647e-06, 0.7, 0, 0, 0, 0.7, 0, 1.45091, 0)
+transform = Transform3D(0.7, -3.1264658e-06, 0, 3.1264658e-06, 0.7, 0, 0, 0, 0.7, 0, 1.45091, 0)
+visible = false
 mesh = SubResource("TorusMesh_5f5u1")
 surface_material_override/0 = SubResource("StandardMaterial3D_lr1hu")
 
@@ -175,7 +179,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_f038i")
 environment = SubResource("Environment_t4b23")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "loop"
 libraries = {
-"": SubResource("AnimationLibrary_y7lvy")
+&"": SubResource("AnimationLibrary_y7lvy")
 }
+autoplay = "loop"

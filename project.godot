@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="3D Pixelart Demo"
-run/main_scene="res://demo.tscn"
-config/features=PackedStringArray("4.0", "Forward Plus")
+run/main_scene="res://Fire_Scene.tscn"
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
@@ -26,6 +26,13 @@ window/stretch/aspect="expand"
 
 [rendering]
 
+renderer/rendering_method="forward_plus"
+renderer/rendering_method.mobile="forward_plus"
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
 lights_and_shadows/directional_shadow/16_bits=false
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=0
+
+[xogot]
+
+project/editorState=[]
+project/breakpoints={}
